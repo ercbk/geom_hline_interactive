@@ -123,12 +123,23 @@ GeomInteractiveVline <- ggproto("GeomVline", Geom,
 # ==== Graph ====
 
 
-hof_bat <- read_rds("data/13 - HOF Batting.rds")
+hof_bat <- read_rds("data/13 - HOF Batting wIds.rds")
+
+
+string1 <- str_extract_all(hof_bat$bbref_playerId, "^[a-z]")
+string2 <- paste0(string1, "/")
+thing <- hof_bat %>% 
+      add_column(b_prefix = string2) %>% 
+      select(b_prefix, everything())
+
+hof_bat$onclick <- sprintf("window.open(\"%s%s%s%s\")",
+                            "https://www.baseball-reference.com/players/", thing$b_prefix, thing$bbref_playerId, ".shtml")
+
 
 a1 <- ggplot(data = hof_bat, aes(x = HR)) +
       geom_density(fill = "#000000", alpha = 0.7) +
-      geom_vline_interactive(aes(xintercept = mean(HR), tooltip = round(mean(HR), 1)), color = "orange") +
+      geom_vline_interactive(aes(xintercept = mean(HR), tooltip = round(mean(HR), 1), data_id = round(mean(HR), 1), onclick = onclick), color = "orange") +
       scale_y_continuous()
 
-ggiraph(ggobj = a1)
+ggiraph(ggobj = a1, hover_css = "cursor:pointer;fill:blue;stroke:blue;")
 
