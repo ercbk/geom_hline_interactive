@@ -1,0 +1,36 @@
+Geom Interactive
+
+
+# SEGMENT
+
+Check all strings/names: segment --> segment interactive
+
+geom_segment_interactive --> no linejoin
+geom_segment_interactive --> layer --> no linejoin
+
+GeomInteractiveSegment --> some stuff in beginning of ggplot at end of interactive 
+GeomInteractiveSegment --> no non_missing_aes
+GeomInteractiveSegment --> default_aes --> adds tooltip = NULL, onclick = NULL, data_id = NULL
+GeomInteractiveSegment --> draw_panel --> panel_params is panel_scales; no linejoin
+GeomInteractiveSegment --> draw_panel --> data --> adds "tooltip", "onclick", "data_id"
+GeomInteractiveSegment --> draw_panel --> if (empty(data)) becomes if (nrow(data) < 1 || ncol(data) < 1 )
+GeomInteractiveSegment --> draw_panel --> if (coord$is_linear()) --> panel_params is panel_scales
+GeomInteractiveSegment --> draw_panel --> if (coord$is_linear()) --> adds if( !is.null(coord$tooltip) &&
+                                                                              !is.character(coord$tooltip) )
+                                                    coord$tooltip <- as.character(coord$tooltip)
+                                              if( !is.null(coord$onclick) && !is.character(coord$onclick) )
+                                                    coord$onclick <- as.character(coord$onclick)
+                                              if( !is.null(coord$data_id) && !is.character(coord$data_id) )
+                                                    coord$data_id <- as.character(coord$data_id)
+
+# ==== hline has no grob ====
+GeomInteractiveSegment --> draw_panel --> if (coord$is_linear()) --> return(segmentsGrob becomes return(interactive_segments_grob
+GeomInteractiveSegment --> draw_panel --> if (coord$is_linear()) --> return(interactive_segments_grob --> adds tooltip = coord$tooltip, onclick = coord$onclick, data_id = coord$data_id,
+GeomInteractiveSegment --> draw_panel --> if (coord$is_linear()) --> return(interactive_segments_grob --> no linejoin
+# ===========================
+
+GeomInteractiveSegment --> draw_panel --> no plyr::rename; no c("xend" = "x", "yend" = "y"), warn_missing = FALSE
+GeomInteractiveSegment --> draw_panel --> GeomPath becomes GeomPathInteractive
+GeomInteractiveSegment --> draw_panel --> GeomPathInteractive --> panel_params becomes panel_scales
+
+

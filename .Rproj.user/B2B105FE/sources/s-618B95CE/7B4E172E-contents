@@ -1,0 +1,141 @@
+baseurl = "https://erbo.rbind.io/"
+disablePathToLower = false
+languageCode = "en-us"
+title = "Analytical Endeavors"
+theme = "hugo-octopress"
+ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
+enableEmoji = true
+
+
+# Disqus shortcode
+# Disable comments for any individual post by adding "comments: false" in its frontmatter
+disqusShortname = "erbo"
+
+# Number of blog posts in each pagination page
+paginate = 6
+
+[permalinks]
+# Configures post URLs
+post = "/blog/:year-:month-:day-:slug/"
+
+# Make tags and categories work
+[indexes]
+  tag = "tags"
+  category = "categories"
+
+
+
+
+[params]
+
+  # --- Start sidebar options ---
+  
+  # Number of last posts that will be displayed in the sidebar - set to 0 or remove to hide this section
+  sidebarRecentLimit = 7
+  
+  sidebarHeader = "Eric Book"
+  
+  sidebarText = """Blogroll
+  </br>
+  [DataTau](https://www.datatau.com)  
+  [R-Bloggers](https://www.r-bloggers.com)  
+  [R Weekly](https://rweekly.org)
+  </br>
+  </br>
+  <img src="http://ghchart.rshah.org/073642/nllspc" alt="Github Activity" />
+  """
+  
+  sidebarMenuEnabled = true
+  
+  github = "https://github.com/nllspc/"
+  twitter = "https://twitter.com/erbo_da"
+  
+  # --- End sidebar options ---
+  
+  
+  # overriding css file in static directory. Parameter in header.html in layouts/partials/ 
+  # customCSS = "css/style.tables.css"
+  
+  # If set to true, navigation menu links will open in a new window with the exception of links to root ("/")
+  # If this item does not exist or set to false, then navigation menu links will open in the same window
+  navigationNewWindow = true
+  
+  # If false, all of blog post will appear on front page (and in pagination)
+  truncate = true
+
+  # Author's name (appears in meta tags and under posts)
+  author = "Eric Book"
+  
+
+  # This text appears in site header under website title
+  #subtitle = "Subtitle appears under website title"
+
+  # Search engine URL
+  searchEngineURL = "https://www.google.com/search"
+
+  # Text of the "Continue Reading" label. &rarr; == right arrow, but it gets messed up in the string so it was added to index.html manually
+  continueReadingText = "Would you like to know more?"
+
+  # Google analytics code - remove if you do not have/want Google Analytics - needs JavaScript
+  googleAnalytics = "UA-115551023-1"
+
+  # Optional piwik tracking
+  #[params.analytics.piwik]
+  #  URL = "https://stats.example.com"
+  #  ID = "42"
+
+  # Switch to true to enable RSS icon link
+  rss = true
+
+  # Set to true to use a text label for RSS instead of an icon
+  # This is overwritten by the "rss" setting
+  textrss = false
+
+  # Website's default description
+  defaultDescription = "Blog for R programming data analysis projects"
+
+  # Populate this with your own search keywords - these will appear in meta tags
+  defaultKeywords = ["rstats" , "r" , "data analysis" , "dashboards"]
+
+  # CSS override files
+  # Paths should be relative to the `static` directory
+  # customCSS = ["css/custom.css","css/custom2.css"]
+  
+  # Set to true to hide ReadingTime on posts
+  disableReadingTime = false
+
+  # Set to true to disable downloading of remote Google fonts
+  disableGoogleFonts = false
+  
+  # Generate taxonomy pages
+  generateTaxonomyList = true
+
+  # This is not needed unless alphabetical sort is needed
+  sortTaxonomyAlphabetical = true
+  
+  # For twitter cards in header.html
+  twitterAuthor = "@erbo_da"
+  twitterSite = "@erbo_da"
+  
+  [params.logo]
+  url = "website.png"
+  width = 200
+  height = 200
+  alt = "Analytical Endeavors"
+      
+  [[menu.sidebar]]
+      Name = "Home"
+      URL = "/"
+      weight = 1
+      
+  [[menu.sidebar]]
+      Name = "Categories"
+      URL = "/categories/"
+      weight = 2
+      
+  [[menu.sidebar]]
+      Name = "Tags"
+      URL = "/tags/"
+      weight = 3
+      
+  
