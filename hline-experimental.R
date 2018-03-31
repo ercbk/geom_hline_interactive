@@ -160,3 +160,34 @@ p <- ggplot(data = war_line) +
       )
 
 ggiraph(ggobj = p, hover_css = "cursor:pointer;fill:orange;stroke:orange;")
+
+
+
+# ==== Example 1 ====
+
+library(ggplot2)
+
+
+g <- ggplot(d, aes(x = date, y = unemploy)) + geom_point() + geom_line()
+
+my_gg <- g + geom_hline_interactive(aes(yintercept = mean(unemploy), tooltip = mean(unemploy)))
+
+ggiraph(code = print(my_gg))
+
+
+# ==== Example 2 ====
+
+dataset = data.frame(x=c(1,2,5,6,8),
+                     y=c(3,6,2,8,7),
+                     vx=c(1,1.5,0.8,0.5,1.3),
+                     vy=c(0.2,1.3,1.7,0.8,1.4),
+                     year = c(2014, 2015, 2016, 2017, 2018))
+
+dataset$clickjs = rep(paste0("alert(\"",mean(dataset$y), "\")"), 5)
+
+
+g <- ggplot(dataset, aes(x = year, y = y)) + geom_point() + geom_line()
+
+my_gg2 <- g + geom_hline_interactive(aes(yintercept = mean(y), tooltip = mean(y), data_id = y, onclick = clickjs))
+
+ggiraph(code = print(my_gg2), hover_css = "cursor:pointer;fill:orange;stroke:orange;")
