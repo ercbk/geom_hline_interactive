@@ -1,0 +1,6 @@
+Closes #97
+
+`geom_hline_interactive` and `geom_vline_interactive` are interactive reference lines based on their counterparts `geom_hline` and `geom_vline` in `ggplot2`
+
+* Added geom_hline_interactive.R and geom_vline_interactive.R to R directory
+* Added geom_hline_interactive.R and geom_vline_interactive.R to examples directory
